@@ -14,4 +14,4 @@ RUN pip3 install -r Requirements.txt
 
 COPY . /
 
-CMD ["ddtrace-run", "python", "-m", "app/app.py"]
+CMD ["ddtrace-run", "python", "-m", "/app/app.py"]
