@@ -1,9 +1,10 @@
-FROM ubuntu:18.04
+FROM python:3.7
 
-MAINTAINER Fernando Cremer "cremerfc@gmail.com"
+ENV VIRTUAL_ENV=/opt/venv
+RUN python -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-RUN apt-get update -y && \
-    apt-get install -y python3-pip python3-dev
+EXPOSE 8888
 
 COPY ./Requirements.txt /Requirements.txt
 
@@ -13,6 +14,4 @@ RUN pip3 install -r Requirements.txt
 
 COPY . /
 
-ENTRYPOINT [ "python3" ]
-
-CMD [ "app/app.py" ]
+CMD ["ddtrace-run", "python", "-m", "app/app.py"]
