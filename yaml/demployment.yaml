@@ -22,7 +22,7 @@ spec:
         admission.datadoghq.com/enabled: "true"
     spec:
       containers:
-        - image: 'cremerfc/inventory-broker:latest'
+        - image: 'cremerfc/inventory-broker:main'
           name: inventory-broker
           env:
             - name: DD_LOGS_INJECTION
