@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres-db-lb
+  name: inventory-broker-postgres
 spec:
   ports:
   - port: 5432
   selector:
-    app: postgresql-db
+    app: inventory-broker-postgres
 type: LoadBalancer
 
 ---
@@ -15,7 +15,12 @@ type: LoadBalancer
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgresql-db
+  name: inventory-broker-postgres
+  labels:
+    app: inventory-broker-postgres
+    tags.datadoghq.com/env: prod
+    tags.datadoghq.com/service: inventory-broker-postgres
+    tags.datadoghq.com/version: "1.0"
 spec:
   serviceName: postgresql-db-service
   selector:
@@ -38,6 +43,8 @@ spec:
           value: testpassword
         - name: PGDATA
           value: /data/pgdata
+        - name: DD_LOGS_INJECTION
+          value: "true"  
       # Volume Claim
   volumeClaimTemplates:
   - metadata:
