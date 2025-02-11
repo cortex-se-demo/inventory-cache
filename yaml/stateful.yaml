@@ -4,11 +4,12 @@ kind: Service
 metadata:
   name: postgres-db-lb
 spec:
+  ports:
+  - port: 5432
   selector:
     app: postgresql-db
 type: LoadBalancer
-ports:
-- port: 5432
+
 ---
 # PostgreSQL StatefulSet
 apiVersion: apps/v1
