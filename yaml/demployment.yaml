@@ -5,7 +5,7 @@ metadata:
     app: inventory-broker
     tags.datadoghq.com/env: prod
     tags.datadoghq.com/service: inventory-broker
-    tags.datadoghq.com/version: 1.0
+    tags.datadoghq.com/version: "1.0"
   name: inventory-broker
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
         app: inventory-broker
         tags.datadoghq.com/env: prod
         tags.datadoghq.com/service: inventory-broker
-        tags.datadoghq.com/version: 1.0
+        tags.datadoghq.com/version: "1.0"
         admission.datadoghq.com/enabled: "true"
     spec:
       containers:
