@@ -1,8 +1,8 @@
-# inventory-broker
+# inventory-cache
 
-Inventory Broker updates all systems when inventory is updated.
+Inventory Cache handles in memory inventory for faster transactions.
 
-## What constitues an inventory update?
+## What constitues an inventory?
 
 Item is sold online or at a store
 
