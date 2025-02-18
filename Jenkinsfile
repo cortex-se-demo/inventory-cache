@@ -17,7 +17,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("cremerfc/inventory-broker")
+        app = docker.build("cremerfc/inventory-cache")
     }
 
     stage('Test image') {
