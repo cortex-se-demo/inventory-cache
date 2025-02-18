@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: inventory-broker
+    app: inventory-cache
     tags.datadoghq.com/env: prod
-    tags.datadoghq.com/service: inventory-broker
+    tags.datadoghq.com/service: inventory-cache
     tags.datadoghq.com/version: "1.0"
-  name: inventory-broker
+  name: inventory-cache
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: inventory-broker
+      app: inventory-cache
   template:
     metadata:
       labels:
-        app: inventory-broker
+        app: inventory-cache
         tags.datadoghq.com/env: prod
-        tags.datadoghq.com/service: inventory-broker
+        tags.datadoghq.com/service: inventory-cache
         tags.datadoghq.com/version: "1.0"
         admission.datadoghq.com/enabled: "true"
     spec:
       containers:
-        - image: 'cremerfc/inventory-broker:main'
-          name: inventory-broker
+        - image: 'cremerfc/inventory-cache:main'
+          name: inventory-cache
           env:
             - name: DD_LOGS_INJECTION
               value: "true"
@@ -33,12 +33,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: inventory-broker-service
+  name: inventory-cache-service
 spec:
   ports:
     - port: 80
       protocol: TCP
       targetPort: 5000
   selector:
-    app: inventory-broker
+    app: inventory-cache
   type: LoadBalancer
