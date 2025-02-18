@@ -17,7 +17,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/inventory-broker
+          images: ${{ secrets.DOCKER_USERNAME }}/inventory-cache
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
